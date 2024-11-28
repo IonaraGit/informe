@@ -1,0 +1,825 @@
+/* GERAL */
+* {
+ font-family: 'Candara', sans-serif;
+}
+
+body {
+  background-color: #eeeeee;
+}
+
+/* CABEÇALHO */
+#logo-superior {
+  width: 10.2em;
+}
+
+.navbar {
+  position: fixed; /* Mantém o menu fixo no topo */
+  width: 100%;
+  z-index: 10; /* Coloca o menu acima do vídeo */
+  background: rgba(0, 0, 0, 0.3); /* Fundo semitransparente */
+}
+
+.navbar-nav .nav-link {
+  color: white; /* Cor inicial do texto */
+  font-size: 18px;
+  font-weight: 700; 
+  transition: color 0.3s ease; /* Animação suave ao passar o mouse */
+  position: relative; /* Necessário para o efeito */
+  transition: color 0.3s ease; /* Animação suave para a cor */
+}
+
+.navbar-nav .nav-link::after {
+  content: ""; /* Adiciona um elemento decorativo */
+  position: absolute;
+  bottom: 0px; /* Posiciona o sublinhado logo abaixo do texto */
+  left: 0;
+  width: 0; /* Largura inicial do sublinhado */
+  height: 2px; /* Espessura do sublinhado */
+  background: none; /* Sem cor inicial */
+  border-bottom: 2px dotted #ef4541; /* Sublinhado pontilhado */
+  transition: width 0.3s ease-in-out; /* Efeito de suavidade */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ef4541; /* Cor laranja ao passar o mouse */
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%; /* O sublinhado se expande para toda a largura */
+}
+
+.navbar-nav .nav-link.active {
+  color: #ef4541; /* Mesma cor que ao passar o mouse */
+}
+
+.navbar-nav .nav-link.active::after {
+  content: ""; /* Elemento decorativo */
+  position: absolute;
+  bottom: 0; /* Posicionado logo abaixo do texto */
+  left: 50%; /* Ponto de referência no meio do link */
+  transform: translateX(-50%); /* Move o sublinhado para o centro */
+  width: 50%; /* Largura do sublinhado */
+  height: 2px; /* Espessura do sublinhado */
+  border-bottom: 2px dotted #ef4541; /* Sublinhado pontilhado */
+}
+
+/* Ao rolar a tela, o header muda de cor */
+.navbar.scrolled {
+  background: rgba(0, 47, 255, 0.4) !important; /* Força a aplicação do estilo */
+  transition: background 0.3s ease-in-out;
+  border-bottom-left-radius: 50% -20%; /* Borda arredondada no canto inferior esquerdo */
+  border-bottom-right-radius: 50% 20%; /* Borda arredondada no canto inferior direito */
+}
+
+/*Botões do menu hamburguer*/
+/* Inicialmente, o botão de X estará escondido */
+.close-btn {
+  display: none;
+}
+
+.align-rigth {
+  float: right;
+}
+
+.navbar-collapse {
+  display: none; /* Inicialmente o menu está escondido */
+}
+/* Mostra o botão de fechar (X) quando o menu está aberto */
+.navbar-collapse.open .close-btn {
+  display: block;
+}
+
+/* Estilo do menu quando está aberto */
+.navbar-collapse.open {
+  display: block; /* Torna o menu visível */
+}
+
+/* Quando o menu estiver aberto, esconder os tracinhos e mostrar o X */
+.navbar-collapse.open .navbar-toggler {
+  display: none; /* Esconde o botão de tracinhos */
+}
+
+.navbar-collapse.open .navbar-toggler-icon {
+  display: none; /* Esconde os tracinhos */
+}
+
+/* Estilo do botão de abrir o menu */
+.navbar-toggler {
+  background: transparent;
+  border: none;
+  color: white;
+  display: block;
+}
+
+.navbar-toggler-icon {
+  display: block;
+}
+
+/* VIDEO DE APRESENTAÇÃO */
+/* Container para o vídeo */
+.video-container {
+  position: relative; /* Permite o posicionamento do texto em relação ao vídeo */
+  width: 100%;
+  height: 80vh; /* Define a altura do vídeo como 80% da altura da tela */
+  overflow: hidden; /* Impede que o vídeo ultrapasse o limite do container */
+}
+
+/* Estilo do vídeo */
+.full-width-video {
+  width: 100%;
+  height: 100%; /* Faz o vídeo ocupar toda a altura do container */
+  object-fit: cover; /* Faz o vídeo preencher a área sem distorcer */
+}
+
+/* Overlay para o texto */
+.video-overlay {
+  position: absolute;
+  top: 50%; /* Centraliza verticalmente o texto */
+  left: 50%; /* Centraliza horizontalmente o texto */
+  transform: translate(-50%, -50%); /* Ajusta o texto para que fique no centro exato */
+  text-align: center; /* Centraliza o texto */
+  color: white; /* Cor padrão do texto */
+  font-size: 2rem; /* Tamanho da fonte */
+  font-weight: bold; /* Deixa a fonte em negrito */
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* Sombra no texto para destacar */
+  padding: 0 20px; /* Adiciona espaço nas laterais do texto */
+}
+
+.video-overlay h1 .highlight {
+  color: rgba(239, 69, 65, 0.7); /* Texto em laranja com transparência */
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+.video-overlay h1 .highlight-2 {
+  color: rgba(242, 242, 242, 0.7); /* Texto em laranja com transparência */;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+/* Estilo da borda decorativa */
+.video-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 15%; /* A borda cobre toda a largura do container */
+  height: 15%; /* Ajusta a altura para cobrir todo o vídeo */
+  pointer-events: none; /* Permite clicar no vídeo sem interferência da borda */
+}
+
+.video-border2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15%; /* A borda cobre toda a largura do container */
+  height: 15%; /* Ajusta a altura para cobrir todo o vídeo */
+  pointer-events: none; /* Permite clicar no vídeo sem interferência da borda */
+}
+
+/* Estilo para o texto "Salto para o futuro" */
+.highlight {
+  color: rgba(239, 69, 65, 0.7); /* Cor #ef4541 com 70% de opacidade */
+  font-size: 6rem;
+  font-weight: 600;
+}
+
+.highlight-2 {
+  color: rgb(255 248 248 / 70%);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Traço conectando as bordas */
+.connecting-line {
+  position: absolute;
+  bottom: 0; /* Ajusta a altura do traço */
+  left: 8%; /* Início do traço a partir da borda esquerda */
+  right: 8%; /* Final do traço a partir da borda direita */
+  height: 18px; /* Espessura do traço */
+  background: #1a5eac; /* Cor do traço, pode ser alterada */
+  z-index: 5; /* Garante que o traço fique acima do vídeo */
+}
+
+/*Icone abaixo do video*/
+.img-speak{
+  width: 7%;
+}
+
+.txt-title {
+  color: #d6d6d6;
+  font-size: 2vw; /* Tamanho baseado na largura da janela */
+  font-weight: bold; /* Adiciona peso à fonte para destaque */
+  text-align: center; /* Centraliza o texto */
+}
+
+ /*Icones das informações de serviços INDEX*/
+.img-icons {
+  width: 50px;
+  height: 50px;
+}
+
+.txt-icons-title {
+  color: #d6d6d6;
+  font-weight: 600;
+  margin: 12px 0px;
+}
+
+.txt-icons-body {
+ color: #d6d6d6;
+}
+
+/* Rodapé estilizado */
+.footer {
+  margin-top: 3.2em;
+  position: relative;
+  background-color: #ffffff;
+  color: #1a5eac;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.footer-wave {
+  position: absolute;
+  top: -30px; /* Altura da curva */
+  left: 0;
+  width: 100%;
+  height: 60px; /* Ajuste a altura da onda */
+  background: white; /* Cor da onda */
+  border-radius: 50% 50% 0 0; /* Cria o formato arredondado */
+  z-index: -1; /* Envia a onda para trás do conteúdo */
+}
+
+.footer-content {
+  z-index: 1; /* Garante que o conteúdo fique acima da onda */
+  position: relative;
+}
+
+/* CABEÇALHO DAS OUTRAS PAGINAS */
+/* Cabeçalho estilizado */
+.onother-header {
+  position: relative;
+  background-color: #1a5eac;
+  color: white;
+  text-align: center;
+  padding: 140px 10px;
+  border-bottom-left-radius: 50% 20%; /* Borda arredondada no canto inferior esquerdo */
+  border-bottom-right-radius: 50% 20%; /* Borda arredondada no canto inferior direito */
+}
+
+/* Onda na parte inferior do cabeçalho */
+.header-wave {
+  position: absolute;
+  bottom: -30px; /* Define a posição da onda */
+  left: 0;
+  width: 100%;
+  height: 60px; /* Ajusta a altura da onda */
+  background: #ef4541; /* Cor da onda */
+  border-radius: 50% 50% 0 0; /* Cria o formato arredondado */
+  z-index: -1; /* Envia a onda para trás do conteúdo */
+}
+
+/* Conteúdo do cabeçalho */
+.header-content {
+  z-index: 1; /* Garante que o conteúdo fique acima da onda */
+  position: relative;
+}
+
+/* Imagens para obras  */
+.img-fluid {
+  max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do container */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+.text-muted {
+  color: #1a5eac; /* Adiciona um tom discreto ao texto */
+}
+
+p {
+  margin: 0; /* Remove margens externas indesejadas */
+}
+
+.rounded {
+  border-radius: 8px; /* Cantos levemente arredondados */
+}
+
+.shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar a imagem */
+}
+
+/* Texto para Obras */
+.txt-title-works {
+  color: #1a5eac;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+/* Imagens Carrossel */
+.img-carousel {
+  width: 40em;
+  height: 26em;
+  border-radius: 15px;
+}
+
+.carousel-item {
+  transition: transform 1s ease-in-out, opacity 0.2s ease-in-out;
+  opacity: 0.3; /* Inicia os itens invisíveis */
+}
+
+.carousel-item.active {
+  opacity: 1; /* Torna o slide ativo visível */
+}
+
+/* LOGIN */
+/* Cartão de login */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Títulos */
+.txt-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+/* Rótulos dos campos */
+.txt-label {
+  font-family: 'Poppins', sans-serif;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Campos de input */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Botão */
+.btn-login {
+  background: linear-gradient(to right, #4a90e2, #0072ff);
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+  background: linear-gradient(to right, #7db2f3, #310dd1);
+  transform: scale(1.05);
+  color: #ffffff;
+  border-bottom: 2px dotted #ef4541; /* Sublinhado pontilhado */
+  transition: width 2s ease-in-out; /* Efeito de suavidade */
+}
+
+/* Link para recuperar senha */
+.text-muted {
+  font-size: 0.9rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.text-muted:hover {
+  color: #4a90e2;
+  text-decoration: underline;
+}
+
+/*SECRETARIAS*/
+/* Estilo para as colunas fixas */
+.col-3 {
+  flex: 0 0 23%; /* Cada coluna ocupa cerca de 23% da largura para permitir espaçamento */
+  max-width: 23%; /* Limita o tamanho máximo */
+  box-sizing: border-box; /* Inclui padding e borda na largura total */
+}
+
+/* Cartões */
+.info-vertical-card {
+  background: #ffffff;
+  border-radius: 8px;
+  text-align: center;
+  overflow: hidden;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-vertical-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para imagens */
+.img-secretary {
+  width: 100%; /* Adapta a largura ao tamanho do container */
+  height: 250px; /* Tamanho fixo para altura */
+  object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorção */
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Cartões */
+.info-vertical-prefeito {
+  background: #ffffff;
+  border-radius: 8px;
+  text-align: center;
+  overflow: hidden;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-container-prefeito {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 130px;
+  border-radius: 8px;
+}
+
+.card-ajuste-prefeito {
+  padding: 0px 30px !important;
+}
+/* textos */
+.txt-secretary-title {
+  color: #1a5eac;
+  font-weight: 600;
+}
+
+/* SECRETÁRIAS */
+/* Container principal do card */
+.card-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Imagem do card */
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Informações do card */
+.card-info {
+  -webkit-font-smoothing: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1a5eac;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  z-index: 1;
+  transform: translateY(100%); /* Esconde informações */
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn-see-more {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1a5eac; /* Cor do texto */
+  background-color: rgba(255, 255, 255, 0.2); /* Fundo branco transparente */
+  border: 2px solid #1a5eac; /* Borda da mesma cor do texto */
+  border-radius: 8px; /* Bordas arredondadas */
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efeito hover */
+.btn-see-more:hover {
+  color: #ffffff; /* Texto branco no hover */
+  transform: scale(1.1); /* Texto levemente maior */
+}
+
+
+/* Texto dentro das informações */
+.card-info h5 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+/* Lista alinhada à esquerda */
+.card-info ul {
+  list-style: disc; /* Marcadores padrão */
+  margin: 0;
+  padding: 15px;
+  text-align: left; /* Alinha os itens à esquerda */
+  width: 100%; /* Preenche a largura do card */
+}
+
+.card-info ul li {
+  font-size: 1rem;
+  margin: 5px 0;
+  color: #d6d6d6; /* Cor do texto */
+  
+}
+/*MODAL*/
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100px); /* Começa 50px acima */
+    opacity: 0; /* Invisível no início */
+  }
+  to {
+    transform: translateY(0); /* Posicionado normalmente */
+    opacity: 1; /* Totalmente visível */
+  }
+}
+
+/* Suaviza a transição de saída */
+@keyframes slideOutToTop {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+/* Modal personalizado */
+.custom-modal .modal-dialog {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.custom-modal.show .modal-dialog {
+  animation-name: slideInFromTop; /* Animação de entrada */
+}
+
+.custom-modal .modal.fade:not(.show) .modal-dialog {
+  animation-name: slideOutToTop; /* Animação de saída */
+}
+
+/* Efeito ao passar o mouse */
+.card-container:hover {
+  transform: translateY(-10px); /* Sobe ligeiramente o card */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+}
+
+.card-container:hover .card-image {
+  transform: translateY(-100%); /* Move a imagem para fora do card */
+}
+
+.card-container:hover .card-info {
+  transform: translateY(0); /* Mostra as informações */
+}
+
+/* PREFEITOS */
+.backgroud-prefeito {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.img-prefeito {
+  width: 100%;
+  height: 440px;
+  border-radius: 15px 101px;
+}
+
+.text-justify {
+  text-align: justify; /* Alinha o texto de forma justificada */
+}
+
+.row.align-items-start {
+  align-items: flex-start; /* Garante que os itens fiquem alinhados ao topo */
+}
+
+.fs-5 {
+  margin-top: 10px; /* Ajusta a margem superior */
+}
+
+.btn-see-more-pref {
+  background-color: #ffb06cc7;
+  color: #1a5eac;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-see-more-pref:hover {
+  background: #f35653;
+  transform: scale(1.05);
+  color: #ffffff;
+  transition: width 2s ease-in-out; /* Efeito de suavidade */
+}
+
+.info-vertical-card-pref {
+  background: #ffb06cc7;
+  border-radius: 8px;
+  text-align: center;
+  overflow: hidden;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 200px;
+  margin-top: 15px;
+}
+
+.align-container-prefeitos {
+  justify-content:space-between;
+}
+/* EVENTOS*/
+.events-this-month {
+  border: 3px solid #1a5eac; /* Borda azul */
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f9f9f9; /* Fundo leve */
+  margin: 30px auto;
+  max-width: 1310px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  text-align: center;
+}
+
+.events-this-month h2 {
+  font-size: 2rem;
+  color: #1a5eac; /* Azul */
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.events-container {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.event-item {
+  background-color: #ffffff; /* Fundo branco */
+  border: 2px solid #f8a5a4; /* Borda leve */
+  border-radius: 8px;
+  padding: 15px;
+  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event-item h4 {
+  margin: 0;
+  color: #1a5eac;  
+}
+
+.event-item p {
+  margin: 5px 0;
+  color: #1c1d1d; 
+}
+
+.event-item:hover {
+  transform: translateY(-5px); /* Efeito de elevação */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); /* Sombra mais forte */
+}
+.second-header {
+  position: relative;
+  background-color: #1a5eac;
+  color: white;
+  text-align: center;
+  padding: 90px 10px;
+  border-top-left-radius: 13% 2%;
+  border-top-right-radius: 13% 2%;
+  border-bottom-left-radius: 13% 2%;
+  border-bottom-right-radius: 13% 2%;
+}
+
+.card-container-img-event {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  transition: transform 0.3s ease; /* Animação suave */
+}
+.card-image-event {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.card-image-event img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantém a proporção da imagem */
+  transition: transform 0.3s ease; /* Animação suave */
+}
+
+.card-container-img-event:hover .card-image-event img {
+  transform: scale(1.2); /* Zoom ao passar o mouse */
+}
+
+.subtitle-galeria {
+  background-color: #f8a5a4;
+  color: #1a5eac;
+  border-radius: 9px;
+  margin-top: 0px;
+}
+
+/* Animações imagens laterais eventos */
+.card-container-img-event {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+[data-aos] {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Responsividade - ajusta o tamanho da fonte em telas menores */
+@media (max-width: 768px) {
+  .video-overlay h1 {
+    font-size: 1.5rem; /* Reduz o tamanho da fonte em telas menores */
+  }
+  .highlight {
+    font-size: 2.5rem; /* Reduz o tamanho da fonte em telas menores */
+  }
+  .txt-title {
+    font-size: 5vw; /* Ajusta ainda mais em telas muito pequenas */
+  }
+  .navbar-toggler {
+    display: block; /* Esconde os tracinhos em telas pequenas */
+  }
+  /*Menu Responsivo*/
+  .navbar-collapse {
+    background-color: #1a5eac;
+    margin-top: 15px;
+    padding: 15px;
+    display: block;
+  }
+  .navbar-nav .nav-link.active::after {
+    content: ""; /* Elemento decorativo */
+    position: absolute;
+    bottom: 0; /* Posicionado logo abaixo do texto */
+    left: 7%; /* Ponto de referência no meio do link */
+    transform: translateX(-50%); /* Move o sublinhado para o centro */
+    width: 15%; /* Largura do sublinhado */
+    height: 2px; /* Espessura do sublinhado */
+    border-bottom: 2px dotted #ef4541; /* Sublinhado pontilhado */
+  }
+  .login-card {
+    padding: 1.5rem;
+  }
+  .col-3 {
+    flex: 0 0 48%; /* Duas colunas por linha em telas menores */
+    max-width: 48%;
+  }
+
+  .img-secretary {
+    height: 200px; /* Reduz altura das imagens */
+  }
+}
+
+@media (max-width: 576px) {
+  .col-3 {
+    flex: 0 0 100%; /* Uma coluna por linha em telas muito pequenas */
+    max-width: 100%;
+  }
+
+  .img-secretary {
+    height: 150px; /* Reduz ainda mais em dispositivos pequenos */
+  }
+  
+  .align-container-prefeitos {
+    justify-content: center;
+    margin: 6px;
+  }
+}
+
+
+
