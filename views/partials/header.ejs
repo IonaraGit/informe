@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informe Salto</title>
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <nav class="navbar navbar-expand-lg bg-transparent">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="/img/logo_branco.png" alt="Logo Prefeitura" id="logo-superior"></a>
+      <!-- Botão de abrir menu (tracinhos) -->
+      <button class="navbar-toggler" type="button" id="toggleBtn">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Menu -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+         <!-- Botão de fechar (X) -->
+         <button class="close-btn btn btn-light align-rigth" id="closeBtn">X</button>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="/obras">Obras</a></li>
+          <li class="nav-item"><a class="nav-link" href="/turismo">Turismo</a></li>
+          <li class="nav-item"><a class="nav-link" href="/secretarias">Secretarias</a></li>
+          <li class="nav-item"><a class="nav-link" href="/prefeito">Prefeito</a></li>
+          <li class="nav-item"><a class="nav-link" href="/eventos">Eventos</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+        </ul>
+       
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const navbarNav = document.getElementById('navbarNav');
+    const closeBtn = document.getElementById('closeBtn');
+    
+    // Abre e fecha o menu, alternando a visibilidade dos botões
+    toggleBtn.addEventListener('click', () => {
+      navbarNav.classList.toggle('open');
+      toggleBtn.classList.add('d-none');  // Esconde o botão de tracinhos
+      closeBtn.classList.remove('d-none');  // Mostra o botão de X
+    });
+
+    // Fecha o menu ao clicar no X
+    closeBtn.addEventListener('click', () => {
+      navbarNav.classList.remove('open');
+      toggleBtn.classList.remove('d-none');  // Mostra o botão de tracinhos
+      closeBtn.classList.add('d-none');   // Esconde o botão de X
+    });
+  </script>
+
+  <!--ANIMAÇÕE SUTIS AO MOVER A TELA -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 2200, // Duração da animação (em milissegundos)
+      once: true // Animação ocorre apenas uma vez
+    });
+  </script>
+  
+</head>

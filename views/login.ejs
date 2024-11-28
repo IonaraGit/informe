@@ -1,0 +1,23 @@
+<%- include ('partials/header.ejs') %>
+<body style="background-color: #1a5eac">
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="login-card shadow p-5 rounded">
+      <h2 class="text-center txt-title mb-4">Bem-vindo!</h2>
+      <form>
+        <div class="mb-3">
+          <label for="matricula" class="form-label txt-label">Matrícula</label>
+          <input type="text" id="matricula" class="form-control" aria-describedby="matricula" placeholder="Digite sua matrícula">
+        </div>
+        <div class="mb-4">
+          <label for="password" class="form-label txt-label">Senha</label>
+          <input type="password" id="password" class="form-control" aria-describedby="password" placeholder="Digite sua senha">
+        </div>
+        <button type="submit" class="btn btn-login w-100">Prosseguir</button>
+      </form>
+      <div class="text-center mt-3">
+        <a href="#" class="text-decoration-none text-muted">Esqueceu sua senha?</a>
+      </div>
+    </div>
+  </div>
+</body>
+<%- include ('partials/footer.ejs') %>

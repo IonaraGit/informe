@@ -1,0 +1,45 @@
+<%- include ('partials/header.ejs') %>
+<body style="background-color: #1a5eac">
+  <div class="video-container">
+    <video class="full-width-video" autoplay muted loop>
+      <source src="/img/cidade.mp4" type="video/mp4">
+      Seu navegador não suporta o elemento de vídeo.
+    </video>
+    <img src="/img/borda.png" alt="Borda decorativa" class="video-border">
+    <img src="/img/borda2.png" alt="Borda decorativa" class="video-border2">
+    <div class="connecting-line"></div> <!-- Linha conectando as bordas -->
+    <div class="video-overlay">
+      <h1>
+        <span class="highlight header-transition">Salto para o futuro</span><br>
+        <span class="highlight-2 header-transition">com o coração no presente.</span>
+      </h1>
+    </div>
+  </div>
+  <div class="container">
+    <img src="/img/falam.png" alt="Icone falar" class="img-speak"> 
+    <span class="txt-title">Os números falam por si</span>
+    <div class="row mt-5">
+      <div class="col-md-3 teste p-3">
+        <img src="/img/vacina.png" alt="Icone vacina" class="img-icons"> 
+        <h3 class="txt-icons-title">Vacinas</h3>
+        <h6 class="txt-icons-body">Mais de 100 doses em 3 meses! Este é mais um passo para proteger nossa cidade contra doenças, cuidando do bem-estar de cada cidadão.</h6>
+      </div>
+      <div class="col-md-3 teste p-3">
+        <img src="/img/ambulancia.png" alt="Icone vacina" class="img-icons"> 
+        <h3 class="txt-icons-title">Ambulancias</h3>
+        <h6 class="txt-icons-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h6>
+      </div>
+      <div class="col-md-3 teste p-3">
+        <img src="/img/leito.png" alt="Icone Leito" class="img-icons"> 
+        <h3 class="txt-icons-title">Leitos</h3>
+        <h6 class="txt-icons-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h6>
+      </div>
+      <div class="col-md-3 teste p-3">
+        <img src="/img/livro.png" alt="Icone livro" class="img-icons"> 
+        <h3 class="txt-icons-title">Livros</h3>
+        <h6 class="txt-icons-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h6>
+      </div>
+    </div>
+  </div>
+</body>
+<%- include ('partials/footer.ejs') %>
