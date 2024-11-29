@@ -7,6 +7,11 @@ body {
   background-color: #eeeeee;
 }
 
+a {
+  text-decoration: none;
+  font-weight: 700;
+}
+
 /* CABEÇALHO */
 #logo-superior {
   width: 10.2em;
@@ -760,6 +765,37 @@ p {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
+
+/* VAGAS */
+/* Adiciona a linha de divisão entre as colunas */
+.row-divider {
+  margin-top: 15px;
+  position: relative;
+  background-color: #fff;
+  padding: 9px;
+  border-radius: 15px;
+}
+
+.row-divider .col-md-6 {
+  position: relative;
+  padding: 0 15px; /* Espaço interno para evitar que o texto encoste na borda */
+}
+
+/* Linha vertical */
+.row-divider .col-md-6:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 2px; /* Espessura da linha */
+  background-color: #ccc; /* Cor do traço */
+}
+
+.icon-whats {
+  width: 1em;
+}
+
 
 /* Responsividade - ajusta o tamanho da fonte em telas menores */
 @media (max-width: 768px) {
