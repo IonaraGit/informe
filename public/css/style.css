@@ -796,6 +796,45 @@ p {
   width: 1em;
 }
 
+/* FALE CONOSCO */
+.row-divider .col-md-4 {
+  position: relative;
+  padding: 0 15px; /* Espaço interno para evitar que o texto encoste na borda */
+}
+
+/* Linha vertical */
+.row-divider .col-md-4:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 2px; /* Espessura da linha */
+  background-color: #ccc; /* Cor do traço */
+}
+
+
+/* SOBRE NÓS */
+.card-about {
+  margin-top: 15px;
+  border-radius: 8px;
+  background-color: #ffb06cc7;
+  padding: 10px; /* Espaçamento interno */
+  display: flex; /* Flexbox para layout horizontal */
+  align-items: center; /* Centraliza verticalmente */
+  transition: transform 0.3s ease; /* Animação suave */
+}
+
+/* Imagem dentro do card */
+.card-about img {
+  /*width: 100px; /* Define largura fixa */
+  height: 70px; /* Define altura fixa */
+  object-fit: cover; /* Ajusta a imagem sem distorção */
+  border-radius: 15px; /* Faz a imagem ficar circular (opcional) */
+
+}
+
+
 
 /* Responsividade - ajusta o tamanho da fonte em telas menores */
 @media (max-width: 768px) {

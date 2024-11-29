@@ -21,6 +21,8 @@ const SecretariasRoutes = require('./routes/SecretariasRoutes')
 const EventosRoutes = require('./routes/EventosRoutes')
 const PrefeitoRoutes = require('./routes/PrefeitoRoutes')
 const VagasRoutes = require('./routes/VagasRoutes')
+const FaleConosco = require('./routes/FaleConoscoRoutes')
+const SobreNosRoutes = require('./routes/SobreNosRoutes')
 
 //Database
 connection.authenticate()
@@ -42,6 +44,8 @@ app.use('/', SecretariasRoutes)
 app.use('/', EventosRoutes)
 app.use('/', PrefeitoRoutes)
 app.use('/', VagasRoutes)
+app.use('/', FaleConosco)
+app.use('/', SobreNosRoutes)
 
 app.listen(8080, () => {
   console.log('Servidor Rodando!')
