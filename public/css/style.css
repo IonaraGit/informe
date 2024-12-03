@@ -654,8 +654,9 @@ p {
 }
 
 .align-container-prefeitos {
-  justify-content:space-between;
+  justify-content: space-around;
 }
+
 /* EVENTOS*/
 .events-this-month {
   border: 3px solid #1a5eac; /* Borda azul */
@@ -822,19 +823,40 @@ p {
   padding: 10px; /* Espaçamento interno */
   display: flex; /* Flexbox para layout horizontal */
   align-items: center; /* Centraliza verticalmente */
-  transition: transform 0.3s ease; /* Animação suave */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Animação suave */
 }
 
 /* Imagem dentro do card */
 .card-about img {
-  /*width: 100px; /* Define largura fixa */
   height: 70px; /* Define altura fixa */
   object-fit: cover; /* Ajusta a imagem sem distorção */
   border-radius: 15px; /* Faz a imagem ficar circular (opcional) */
-
 }
 
+/* Efeito ao passar o mouse */
+.card-about:hover {
+  transform: scale(1.05); /* Aumenta o tamanho do card */
+  background-color: #ff9270; /* Altera a cor de fundo */
+}
 
+/* EXPRESSO SALTO */
+
+.info-vertical-card-express {
+    background: #fff;
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 410px;
+    margin-top: 15px;
+}
+
+.card-container-express {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
 
 /* Responsividade - ajusta o tamanho da fonte em telas menores */
 @media (max-width: 768px) {

@@ -23,6 +23,7 @@ const PrefeitoRoutes = require('./routes/PrefeitoRoutes')
 const VagasRoutes = require('./routes/VagasRoutes')
 const FaleConosco = require('./routes/FaleConoscoRoutes')
 const SobreNosRoutes = require('./routes/SobreNosRoutes')
+const ExpressoSaltoRoutes = require('./routes/ExpressoSaltoRoutes')
 
 //Database
 connection.authenticate()
@@ -46,6 +47,7 @@ app.use('/', PrefeitoRoutes)
 app.use('/', VagasRoutes)
 app.use('/', FaleConosco)
 app.use('/', SobreNosRoutes)
+app.use('/', ExpressoSaltoRoutes)
 
 app.listen(8080, () => {
   console.log('Servidor Rodando!')
