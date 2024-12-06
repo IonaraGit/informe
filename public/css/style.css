@@ -840,7 +840,6 @@ p {
 }
 
 /* EXPRESSO SALTO */
-
 .info-vertical-card-express {
     background: #fff;
     border-radius: 8px;
@@ -857,6 +856,12 @@ p {
   overflow: hidden;
   border-radius: 8px;
 }
+
+.img-logo-express {
+  width: 41px;
+  margin-bottom: 28px;
+}
+
 
 /* Responsividade - ajusta o tamanho da fonte em telas menores */
 @media (max-width: 768px) {
