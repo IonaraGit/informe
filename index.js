@@ -50,5 +50,5 @@ app.use('/', SobreNosRoutes)
 app.use('/', ExpressoSaltoRoutes)
 
 app.listen(8081, () => {
-  console.log('Servidor Rodando!')
+  console.log('Servidor Rodando! - 8081')
 })
