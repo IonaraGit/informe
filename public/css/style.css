@@ -862,6 +862,35 @@ p {
   margin-bottom: 28px;
 }
 
+/*VEREADORES*/
+.color-strong {
+  color: #1a5eac;
+}
+
+/*SIMBOLOS OFICIAIS*/
+.img-symbols {
+  width: 150px;  /* Defina o tamanho desejado */
+  height: 150px; /* Mantém todas as imagens na mesma altura */
+  object-fit: contain; /* Garante que a imagem fique dentro do tamanho sem distorcer */
+  display: block;
+  margin: 0 auto; /* Centraliza a imagem dentro do container */
+}
+
+.img-symbols-flag {
+  width: 212px;  /* Defina o tamanho desejado */
+  height: 150px; /* Mantém todas as imagens na mesma altura */
+  object-fit: contain; /* Garante que a imagem fique dentro do tamanho sem distorcer */
+  display: block;
+  margin: 0 auto; /* Centraliza a imagem dentro do container */
+}
+
+.btn-see-more-symbols {
+  background-color: #ffb06cc7;
+  color: #1a5eac;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+}
 
 /* Responsividade - ajusta o tamanho da fonte em telas menores */
 @media (max-width: 768px) {

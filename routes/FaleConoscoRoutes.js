@@ -1,8 +1,10 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
+const FaleConoscoController = require('../controllers/FormControllers'); // Importe o controlador
 
-router.get ('/faleconosco', (req, res) => {
+// Exibe o formulário
+router.get('/faleconosco', (req, res) => {
   res.render('faleconosco');
 });
 
-module.exports = router
+module.exports = router;
