@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="container">
-    <form action="/form-salvar" method="POST">
+    <form action="/save-form" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="form-group col-lg-6 mt-3">
           <label for="first_name">Nome</label>
@@ -46,13 +46,28 @@
           <input type="file" class="form-control" id="files" name="files" multiple accept="image/*, video/*, .pdf">
         </div>
         <div class="form-group col-12 mt-3">
-          <button type="submit" class="btn btn-primary">Enviar</button>
+          <button class="btn btn-primary">Enviar</button>
         </div>
       </div>
     </form>
-    
+    <% if (message) { %>
+      <script>
+        Swal.fire({
+          icon: 'success',
+          title: '<%= message %>',
+          confirmButtonText: 'Ok',
+          background: '#f9f9f9',
+          customClass: {
+            title: 'swal-title',
+            popup: 'swal-popup',
+            confirmButton: 'swal-confirm-btn',
+          }
+        });
+  
+      </script>
+      
+    <% } %>
     
   </div>
-</body>
 </body>
 <%- include('partials/footer.ejs') %>

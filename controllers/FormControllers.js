@@ -1,17 +1,20 @@
+const express = require ('express')
+const router = express.Router();
 const User = require('../models/User');
 const Subject = require('../models/Subject');
 const File = require('../models/File');
-const express = require('express')
-const router = express.Router()
+const upload = require('../multer/multerConfig')
 
 
-router.post('/form-salvar', async (req, res) => {
+// Salvar formulário
+router.post('/save-form', upload.array('files'), async (req, res) => {
   try {
     const { first_name, last_name, phone, email, subject_name, subject_description } = req.body;
+    const files = req.files;  // Agora você pode acessar os arquivos enviados
 
-    console.log("veio:", first_name, last_name, phone, email, 'nome aquivo:',subject_name, subject_description )
+    console.log('DADOS QUE VIERAM: ', first_name, last_name, phone, email, subject_name, subject_description, files);
 
-    // Criando o usuário e capturando o ID
+    // Criando o usuário
     const user = await User.create({
       first_name,
       last_name,
@@ -19,23 +22,33 @@ router.post('/form-salvar', async (req, res) => {
       email
     });
 
-    // Criando o assunto e associando ao usuário criado
+    // Criando o assunto relacionado ao usuário
     const subject = await Subject.create({
-      name: subject_name,
-      description: subject_description,
-      user_id: user.id  // Pegando o ID do usuário criado
+      subject_name,
+      subject_description,
+      userId: user.id // Relacionando com o usuário criado
     });
 
-    const file = await File.create({
-      
-    })
+    // Processando e salvando os arquivos
+    if (files && files.length > 0) {
+      for (const file of files) {
+        await File.create({
+          file_name: file.originalname, // Nome do arquivo
+          file_type: file.mimetype, // Tipo de arquivo
+          file_url: `/uploads/${file.filename}`, // Caminho do arquivo
+          subjectId: subject.id // Relacionando os arquivos ao assunto
+        });
+      }
+    }
 
-    res.send('Formulário salvo com sucesso!');
+    const message = 'SALVO!'
+    res.render('faleconosco', {message: message});
+
   } catch (error) {
     console.error(error);
-    res.send(error);
+    res.status(500).json({ message: 'Erro ao salvar dados' });
   }
 });
 
 
-module.exports = router
+module.exports = router;

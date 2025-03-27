@@ -1,29 +1,36 @@
-const { DataTypes } = require('sequelize');
-const connection = require('../database/database');
-const User = require('./User'); // Importando o modelo de usuário
+const { DataTypes } = require('sequelize')
+const connection = require('../database/database')
+const User = require('./User')
 
-const Subject = connection.define('subjects', {
-  name: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-    validate: {
-      len: [3, 100] // Tamanho entre 3 e 100 caracteres
+const Subject = connection.define(
+  'subjects',
+  {
+    subject_name: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      validate: {
+        len: [2, 100] //Entre 2 e 100 caracteres
+      }
+    },
+    subject_description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     }
   },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: true // Descrição é opcional
+  {
+    timestamps: true // Cria automaticamente `createdAt` e `updatedAt`
   }
-}, {
-  timestamps: true // Cria automaticamente `createdAt` e `updatedAt`
-});
+)
 
-// Relacionamento 1:N: Um usuário pode ter vários assuntos
-Subject.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE' // Se o usuário for excluído, os assuntos também serão excluídos
-});
+User.hasMany(Subject) 
+Subject.belongsTo(User) 
 
-Subject.sync({ force: false });
+// Hook para formatar nome antes de salvar (maiúsculos)
+Subject.beforeCreate(subject => {
+  subject.subject_name = subject.subject_name.toUpperCase();
+  subject.subject_description = subject.subject_description.toUpperCase();
+})
 
-module.exports = Subject;
+Subject.sync({ force: false })
+
+module.exports = Subject

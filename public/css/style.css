@@ -336,6 +336,11 @@ p {
 
 /* LOGIN */
 /* Cartão de login */
+
+.text-justify {
+  text-align: justify;
+}
+
 .login-card {
   width: 100%;
   max-width: 400px;
@@ -892,6 +897,37 @@ p {
   width: 100%;
 }
 
+
+/*ADMINISTRATIVO*/
+.reports-list {
+  margin-top: 20px;
+}
+
+.report-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.report-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.report-card p {
+  font-size: 16px;
+}
+
+.report-card a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.report-card a:hover {
+  text-decoration: underline;
+}
 /* Responsividade - ajusta o tamanho da fonte em telas menores */
 @media (max-width: 768px) {
   .video-overlay h1 {

@@ -3,16 +3,38 @@
   <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="login-card shadow p-5 rounded">
       <h2 class="text-center txt-title mb-4">Bem-vindo!</h2>
-      <form>
+      <form class="text-justify" method="POST" action="/login">
+        <% if (message) { %>
+          <script>
+            Swal.fire({
+            icon: 'warning',
+            title: '<%= message %>',
+            confirmButtonText: 'Ok',
+            background: '#f9f9f9',
+            customClass: {
+              title: 'swal-title',
+              popup: 'swal-popup',
+              confirmButton: 'swal-confirm-btn',
+            }
+          });
+          </script>
+        <% } %>        
+        
         <div class="mb-3">
-          <label for="matricula" class="form-label txt-label">Matrícula</label>
-          <input type="text" id="matricula" class="form-control" aria-describedby="matricula" placeholder="Digite sua matrícula">
+          <label for="matricula" class="form-label txt-label">Registro</label>
+          <input type="text" id="record" class="form-control" aria-describedby="record" name="record" placeholder="Digite seu registro" required>
         </div>
         <div class="mb-4">
           <label for="password" class="form-label txt-label">Senha</label>
-          <input type="password" id="password" class="form-control" aria-describedby="password" placeholder="Digite sua senha">
+          <input type="password" id="password" class="form-control" aria-describedby="password" name="password" placeholder="Digite sua senha" required>
         </div>
-        <button type="submit" class="btn btn-login w-100">Prosseguir</button>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+          <label class="form-check-label" for="flexCheckChecked">
+            Não sou um robô
+          </label>
+        </div>
+        <button type="submit" class="btn btn-login w-100 mt-3">Prosseguir</button>
       </form>
       <div class="text-center mt-3">
         <a href="#" class="text-decoration-none text-muted">Esqueceu sua senha?</a>
@@ -20,4 +42,25 @@
     </div>
   </div>
 </body>
+
+<!-- CHECK BOX -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const checkbox = document.getElementById("flexCheckChecked");
+
+    form.addEventListener("submit", function (event) {
+      if (!checkbox.checked) {
+        event.preventDefault(); // Impede o envio do formulário
+        Swal.fire({
+          icon: "error",
+          title: "Marque a opção 'Não sou um robô'",
+          confirmButtonText: "Ok",
+          background: "#f9f9f9",
+        });
+      }
+    });
+  });
+</script>
+
 <%- include ('partials/footer.ejs') %>

@@ -1,0 +1,101 @@
+<%- include('partials/headeradm.ejs') %>
+<body>
+  <div class="onother-header">
+    <div class="header-content">
+      <h1>Administrativo</h1>
+      <h5>Confira os relatos da população</h5>
+    </div>
+  </div>
+  <h2>Bem-vindo, <%= user.record %>!</h2>
+  <h3>Alterar Senha</h3>
+  <form action="/admin/update-password" method="POST" id="passwordForm">
+    <input type="hidden" name="record" value="<%= user.record %>">
+    
+    <div class="mb-3">
+      <label for="oldPassword">Senha Antiga:</label>
+      <input type="password" name="oldPassword" id="oldPassword" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="newPassword">Nova Senha:</label>
+      <input type="password" name="newPassword" id="newPassword" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="confirmPassword">Confirmar Nova Senha:</label>
+      <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Atualizar Senha</button>
+  </form>
+
+  <% if (message) { %>
+    <script>
+      alert("<%= message %>");
+    </script>
+  <% } %>
+
+
+  <div class="container my-5 body-transition">
+    <div data-aos="fade-up">
+      <h2>Relatórios</h2>
+      <hr>
+
+      <% if (subjects && subjects.length > 0) { %>
+        <div class="reports-list">
+          <% subjects.forEach(subject => { %>
+            <div class="report-card">
+              <h3><%= subject.subject_name %></h3>
+              <p><%= subject.subject_description %></p>
+
+              <!-- Exibindo os dados do usuário associado -->
+              <% if (subject.User) { %>
+                <p>Enviado por: <%= subject.User.first_name %> <%= subject.User.last_name %></p>
+                <p>Email: <%= subject.User.email %></p>
+              <% } else { %>
+                <p>Usuário não encontrado.</p>
+              <% } %>
+
+              <!-- Exibindo os arquivos relacionados ao assunto -->
+              <% if (filesBySubject[subject.id] && filesBySubject[subject.id].length > 0) { %>
+                <div class="files">
+                  <% filesBySubject[subject.id].forEach(file => { %>
+                    <a href="<%= file.file_url %>" target="_blank"><%= file.file_name %></a><br>
+                  <% }); %>
+                </div>
+              <% } else { %>
+                <p>Nenhum arquivo anexado.</p>
+              <% } %>
+            </div>
+          <% }); %>
+        </div>
+      <% } else { %>
+        <p>Nenhum relatório encontrado.</p>
+      <% } %>
+    </div>
+  </div>
+  <script>
+    window.onpageshow = function(event) {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
+  </script>
+
+  <!--SENHAS IGUAIS-->
+  
+  <script>
+    // Captura o evento de envio do formulário
+    document.getElementById('passwordForm').addEventListener('submit', function(event) {
+      const newPassword = document.getElementById('newPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      // Verifica se as senhas são iguais
+      if (newPassword !== confirmPassword) {
+        event.preventDefault();  // Impede o envio do formulário
+        alert('As novas senhas não coincidem. Por favor, tente novamente.');
+      }
+    });
+  </script>
+</body>
+<%- include('partials/footer.ejs') %>
